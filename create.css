@@ -1,7 +1,7 @@
 
 body{
-    background-color:black;
-    color:white;
+    background-color:white;
+    color:black;
     text-align:center;
     font-family: 'Roboto', sans-serif;
 }
@@ -13,7 +13,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: black;
+    background-color: white;
   }
   
   li {
@@ -24,7 +24,7 @@ ul {
   li a {
       text-align:center;
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -40,19 +40,21 @@ ul {
 .form-title{
     height:100px;
     width:40;
-    color:white;
+    color:black;
     height:50px;
     font-size:24px;
     text-align:center;
     border-radius:25px;
-    background-color:black;
+    border-style:none;
+    background-color:white;
   
 }
 /* CREATE TEXT POST HEADING */
 h1{
   
-    color:white;
+    color:black;
     text-align:center;
+    background-color:white;
 }
 /* CONTAINER STYLE*/
 .container{
@@ -66,12 +68,13 @@ h1{
 .blogContent{
     width:80%;
     font-size:20px;
-    color:white;
+    color:black;
     height:600px;
 border-radius:25px;
-border-color:black;
+border-style:none;
+border-color:white;
 padding:25px;
-    background-color:black;
+    background-color:#ADD8E6;
    
 }
 /* PUBLISH BUTTON */
@@ -79,8 +82,9 @@ padding:25px;
     height:50px;
     width:40;
     font-size:20px;
-    background-color:black;
-    color:white;
+    background-color:white;
+    color:black;
     border-radius:25px;
+    border-style:none;
 }
 
