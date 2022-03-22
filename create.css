@@ -1,9 +1,86 @@
+
 body{
     background-color:black;
+    color:white;
+    text-align:center;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* NAV BAR STYLE*/
+ul {
+    text-align:center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+  }
+  
+  li {
+  display:inline-block;
+    
+  }
+  
+  li a {
+      text-align:center;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to grey on hover */
+  li a:hover {
+    background-color:grey;
+  }
+
+
+
+.form-title{
+    height:100px;
+    width:40;
+    color:white;
+    height:50px;
+    font-size:24px;
+    text-align:center;
+    border-radius:25px;
+    background-color:black;
+  
+}
+/* CREATE TEXT POST HEADING */
 h1{
-    font-family: 'Roboto', sans-serif;
+  
     color:white;
     text-align:center;
 }
+/* CONTAINER STYLE*/
+.container{
+    display:inline-block;
+    width:90%;
+    background-color:white;
+    border-width:2000;
+    border-radius:25px;
+}
+/* BLOG CONTENT TEXT BOX */
+.blogContent{
+    width:80%;
+    font-size:20px;
+    color:white;
+    height:600px;
+border-radius:25px;
+border-color:black;
+padding:25px;
+    background-color:black;
+   
+}
+/* PUBLISH BUTTON */
+.submitBtn{
+    height:50px;
+    width:40;
+    font-size:20px;
+    background-color:black;
+    color:white;
+    border-radius:25px;
+}
+

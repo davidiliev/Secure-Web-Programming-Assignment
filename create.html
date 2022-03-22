@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="create.css">
+<!-- reference for font-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
@@ -10,7 +11,35 @@
 </head>
 
 <body>
-<!--TODO: Top Navigation Bar-->
+<!--Top Navigation Bar-->
+<ul>
+    <li><a href="default.asp">Home</a></li>
+    
+    <li><a href="contact.asp">About</a></li>
+    <li><a href="news.asp">Archive</a></li>
+    <li><a href="contact.asp">Create</a></li>
+    <li><a href="about.asp">Login</a></li>
+  </ul> 
     <h1>Create Blog Post</h1>
 <!--FORM-->
+<div class="container">
+    <div class="row">
+      <div class="formElements">
+        <form method="post" role="form">
+          <div class="blog-title">
+            <input type="text" class="form-title" name="title" placeholder="Title"/>
+          </div>
+          <div class="form-group">
+          
+          </div>
+          <div class="form-group">
+            <textarea class="blogContent" name="content"></textarea>
+          </div>
+          <div class="form-group">
+             <input type="submit" name="Submit" value="PUBLISH" class="submitBtn" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
