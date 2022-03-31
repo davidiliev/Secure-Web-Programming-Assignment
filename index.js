@@ -52,7 +52,8 @@ function retrieveData() {
  * @returns a post document element.
  */
 function createPost(data) {
-    let post = document.createElement("post");
+    let post = document.createElement("div");
+    post.setAttribute("id", "post");
 
     // Create Post title as heading
     let item = document.createElement('h2'); // TODO: try different sizes OR custom tag.
@@ -61,6 +62,7 @@ function createPost(data) {
     
     // Create Post date
     item = document.createElement('p');
+    item.setAttribute("id", "date");
     item.append(data.date);
     post.appendChild(item);
     

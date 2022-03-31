@@ -1,14 +1,101 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf‐8">
-        <title>InsertThemeNameHere</title>
+        <meta charset="UTF-8">
+        <title>Reading Blog</title>
+
+        <style>
+            .navbar {
+                overflow: hidden;
+                background-color: #333;
+                position: sticky;
+                position: -webkit-sticky;
+                top: 0;
+                padding: 0;
+                /*width: 100%;*/
+                width: 800px;
+            }
+
+            /* Navigation bar links */
+            .navbar a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            /* Navigation bar interaction / colour change */
+            .navbar a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            body {
+                width: 800px;
+                color: #454545;
+                margin: auto;
+                background-color: powderblue; 
+                align-content: center;
+                align-items: center;                
+            }
+
+            #post {
+                margin-top: 20px; /* Want space at the button for the scroll button to not overlap*/
+                padding: 8px 16px;
+                border: #333;
+                border-radius: 10px;
+                border-width: 1px;
+                border-style: solid;
+                background-color: #EEEEEE;
+                line-height : 1.4; 
+                font-size : 18px;
+            }
+            #column {
+                padding-bottom: 100px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            /* The title of a post */
+            #post > h2 {
+                text-align: center;
+            }
+
+            /* The date within a post*/
+            #post > #date { /*While all dates are children of posts this heads with readability. */
+                color: grey;
+            }
+            #post > p {
+
+            }
+
+        </style>
     </head>
     <body>
-        <!--TODO: Top-level navigation bar-->
 
-        <!--main area to display posts. post generated via javascript "backend calls" -->
-        <div id="mainSection"></div>
+
+        <div id="column">
+            <h1>TITLE</h1>
+            <!--Top-level navigation bar-->
+            <div class="navbar", position="vertical">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="archive.html">Archive</a>
+                <a href="create.html">Create</a>
+                <a href="login.html">Login</a>
+            </div>
+            
+            <!--main area to display posts. post generated via javascript "backend calls" -->
+            <div id="mainSection"></div>
+        </div>
+
+
+
+
 
         <!--TODO: Floating 'scroll-up' button-->
         <script src="index.js"></script>
