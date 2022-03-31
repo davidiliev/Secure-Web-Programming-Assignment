@@ -7,135 +7,70 @@
   }
   
   body{
-    background: linear-gradient(
-       105deg,
-       #88beee ,
-       #0a2e73
-   );
+    width: 800px;
+    color: #454545;
+    margin: auto;
+    background-color: powderblue; 
+    align-content: center;
+    align-items: center;         
   }
-  
-  .wrapper{
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    display: flex;
-  }
-  
-  .registration_form{
-    border-radius: 5px;
-    width: 400px;
-    background: white;
-    padding: 25px;
-  }
-  
-  .registration_form .title{
-    color: white;
-    background:rgb(13, 98, 215);
-    letter-spacing: 2px;
-    font-weight: 700;
+
+  h1 {
     text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    margin-top: -25px;
-    margin-left:-25px;
-    margin-right:-25px;
-  }
-  
-  .form_wrap{
-    margin-top: 35px;
-  }
-  
-  .form_wrap .input_wrap{
-    margin-bottom: 15px;
-  }
-  
-  .form_wrap .input_wrap:last-child{
-    margin-bottom: 0;
-  }
-  
-  .form_wrap .input_wrap label{
-    margin-bottom: 3px;
-    color: #1a1a1f;
-    display: block;
-  }
-  
-  .form_wrap .input_grp{
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .form_wrap .input_grp  input[type="text"]{
-    width: 165px;
-  }
-  
-  .form_wrap  input[type="text"]{
-    width: 100%;
-    padding: 10px;
-    outline: none;
-    border-radius: 3px;
-    border: 1.3px solid #9597a6;
-  }
-  
-  .form_wrap  input[type="text"]:focus{
-    border-color: #063abd;
-  }
-  
-  .form_wrap ul{
-    padding: 8px 10px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    border:1px solid rgb(115, 185, 235);
-    width:70%;
-    background: rgb(206, 238, 242);
-    margin-left: 15%;
-  }
-  
-  .form_wrap ul li:first-child{
-    margin-right: 15px;
-  }
-  
-  .form_wrap ul .radio_wrap{
-    position: relative;
-    margin-bottom: 0;
-  }
-  
-  .form_wrap ul .radio_wrap .input_radio{
-    position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 0;
-  }
-  
-  .form_wrap ul .radio_wrap span{
-    display: inline-block;
-    font-size: 17px;
-    padding: 3px 15px;
-    border-radius: 15px;
-    color: #101749;
-  }
-  
-  .form_wrap .input_radio:checked ~ span{
-    background: #105ce2;
-    color:white;
-  }
-  
-  /* Submit Button */
-  .form_wrap .submit_btn{
-    font-size:17px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    width: 100%;
-    background: #0d6ad7;
-    padding: 10px;
-    border: 0;
-    color:white;
-  }
-  
-  /* Button Hover effect */
-  .form_wrap .submit_btn:hover{
-    background: #051c94;
-  }
-  
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  padding: 0;
+  /*width: 100%;*/
+  width: 800px;
+}
+
+/* Navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Navigation bar interaction / colour change */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.form-container {
+  text-align: left;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  display: grid;
+  transform: translate(-50%, -50%);
+  color: #f2f2f2;
+  margin: auto;
+  background-color: powderblue; 
+  align-content: center;
+  align-items: center;  
+}
+
+.form-container h1{
+  position: absolute;
+  top: 5%;
+  left: 3%;
+}
+
+.register-section{
+  text-align: center;
+  padding: 3rem;
+  width: 500px;
+  background-color: #454545; 
+  ;
+}
