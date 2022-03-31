@@ -1,50 +1,39 @@
 <!DOCTYPE html>
+<html lang="en">
+<!-- reference for styles-->
+<link rel="stylesheet" href="registration_style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
 <head>
     <meta charset="utf‐8">
-    <title>InsertThemeNameHere</title>
-    <link rel="stylesheet" href="create.css">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Assignment 1: Blong Frontend - Registration Page</title>
 </head>
 
-<div class="wrapper">
-
-    <div class="registration_form">
-   <!-- Title -->
-     <div class="title">
-       Registration Form
-     </div>
-   
-   <!-- Form -->
-    <form>
-     <div class="form_wrap">
-      <div class="input_grp">
-   
-   <!-- Username-->
-        <div class="input_wrap">
-         <label for="Uname">Username</label>
-         <input type="text" id="fname">
+<body>
+  <!--FORM-->
+  <div class="form-container">
+    <form method="POST" action="login.html" id="register" class="input-group">
+        <div class="Register-section">
+            <h1>Register</h1>
+            <div class="form-content">
+              <label for="username">username</label>
+              <input type="text" placeholder="your username" required>
+            </div>
+            <div class="form-content">
+              <label for="email">email address</label>
+              <input type="email" placeholder="your email address" required>
+            </div>
+            <div class="form-content">
+              <label for="password">password</label>
+              <input type="password" placeholder="your password" required minlength="6">
+            </div>
+            <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
         </div>
-   
-   <!-- Email Address -->
-       <div class="input_wrap">
-         <label for="email">Email Address</label>
-         <input type="text" id="lname">
-       </div>
-     </div>
-   
-   <!-- Password -->
-    <div class="input_wrap">
-     <label for="password">Password</label>
-     <input type="password" id="email" minlength="6">
     </div>
+  </form>
+</div>
+</body>
 
-   
- 
-   <!-- Submit button -->
-    <div class="input_wrap">
-      <input type="submit" value="Register Now" class="submit_btn">
-    </div>
-   
-   </div>
-   </form>
-   </div>
-   </div>
+</html>
