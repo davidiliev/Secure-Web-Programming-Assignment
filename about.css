@@ -1,0 +1,113 @@
+/* Navigation bar */ 
+#navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    margin:0 0 50px 0;
+}
+/* Hyperlinks */
+#navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: large;
+}
+/* Hover state */
+#navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* */
+#navOptions {
+    float: left;
+    display: contents;
+}
+/* Mobile feature. TODO: Bug is kind of hiding it. Actually works */ 
+#toggle {
+    float:right;
+    appearance: none;
+    margin: 0 0px 0 0;
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+/* unordered list */
+#navOptions {
+    list-style-type: none;
+}
+
+/* Other elements */
+body {
+    max-width: 800px;
+    color: #454545;
+    margin: auto;
+    background-color: powderblue; 
+    align-content: center;
+    align-items: center;              
+}
+#column {
+    width: 100%;
+    margin: 0;
+    padding-bottom: 50px;
+    background-color: bisque; /* can remove this column and copy this color into body. */
+}
+
+h1 {
+    /* TODO */
+    text-align: center;
+    margin: 0;
+    padding: 20px 0 20px 0;
+    height:178px; /* 218 - vertical padding*/
+    background-image: url(books.jpg);
+}
+
+#post {
+    /*margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
+    margin: 5% 5% 0 5%;
+    width:auto;
+    /*padding: 8px;*/
+    padding: 8px 32px;
+    border: #333;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #EEEEEE;
+    line-height : 1.4; 
+    font-size : large; /* TODO: Agree on font size*/
+}
+
+/* The title of a post */
+#post > h2 {
+    text-align: center;
+}
+
+/* The date within a post*/
+#post > #date { /*While all dates are children of posts this heads with readability. */
+    color: grey;
+}
+
+/* Mobile displays */
+@media screen and (max-width: 800px) {
+/* Display toogle*/
+#toggle { 
+    background-color: aqua;
+}
+/* Display first child ... took a while */
+#toggle:not(:checked) + #navOptions li:not(:first-child) { 
+    display:none;
+}
+/* Expand contents */ 
+#toggle:checked + #navOptions {
+    display:contents;
+}
+/* Prevents some visual nonsense */
+#toggle:checked + #navOptions li a {
+    float:none;
+    text-align: left;
+}
+}

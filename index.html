@@ -2,106 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Reading Blog</title>
-
-        <style>
-            .navbar {
-                overflow: hidden;
-                background-color: #333;
-                position: sticky;
-                position: -webkit-sticky;
-                top: 0;
-                padding: 0;
-                /*width: 100%;*/
-                width: 800px;
-            }
-
-            /* Navigation bar links */
-            .navbar a {
-                float: left;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-            /* Navigation bar interaction / colour change */
-            .navbar a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
-            body {
-                width: 800px;
-                color: #454545;
-                margin: auto;
-                background-color: powderblue; 
-                align-content: center;
-                align-items: center;                
-            }
-
-            #post {
-                margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
-                padding: 8px 32px;
-                border: #333;
-                border-radius: 10px;
-                border-width: 1px;
-                border-style: solid;
-                background-color: #EEEEEE;
-                line-height : 1.4; 
-                font-size : 18px;
-            }
-            #column {
-                padding-bottom: 100px;
-                background-color: bisque;
-            }
-
-            h1 {
-                text-align: center;
-                margin: 0;
-                padding: 20px 0 20px 0;
-                /*background-color: blue; Optional background for the title*/
-            }
-
-            /* The title of a post */
-            #post > h2 {
-                text-align: center;
-            }
-
-            /* The date within a post*/
-            #post > #date { /*While all dates are children of posts this heads with readability. */
-                color: grey;
-            }
-            #post > p {
-
-            }
-
-        </style>
+        <link rel="stylesheet" href="index.css">
     </head>
-    <body>
-
-
+    <body>     
         <div id="column">
-            <h1>TITLE</h1>
+            <h1>Title</h1>
             <!--Top-level navigation bar-->
-            <div class="navbar", position="vertical">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="archive.html">Archive</a>
-                <a href="create.html">Create</a>
-                <a href="login.html">Login</a>
+            <div id="navbar">
+                <input type="checkbox" id="toggle" unchecked/>    
+                <!-- Page links in nav bar. Put this page as the first list item. -->    
+                <ul id="navOptions">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="create.html">Create</a></li>
+                        <li><a href="login.html">Login</a></li>
+                </ul>>
             </div>
-            
+
             <!--main area to display posts. post generated via javascript "backend calls" -->
             <div id="mainSection"></div>
         </div>
-
-
-
-
-
         <!--TODO: Floating 'scroll-up' button-->
+
         <script src="index.js"></script>
     </body>
 </html>

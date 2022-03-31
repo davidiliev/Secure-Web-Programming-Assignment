@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf‐8">
-        <title>InsertThemeNameHere</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Archive</title>
+        <link rel="stylesheet" href="archive.css">
     </head>
-    <body>
-         <!--TODO: Top-level navigation bar-->
-        <div id="mainSection"></div>
+    <body>     
+        <div id="column">
+            <h1>Title</h1>
+            <!--Top-level navigation bar-->
+            <div id="navbar">
+                <input type="checkbox" id="toggle" unchecked/>    
+                <!-- Page links in nav bar. Put this page as the first list item. -->    
+                <ul id="navOptions">
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="create.html">Create</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>>
+            </div>
+
+            <!--main area to display posts. post generated via javascript "backend calls" -->
+            <div id="mainSection"></div>
+        </div>
         <!--TODO: Floating 'scroll-up' button-->
         <script src="archive.js"></script>
     </body>
