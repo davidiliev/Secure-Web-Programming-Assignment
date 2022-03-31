@@ -96,7 +96,7 @@ h1{
     background-color:#ADD8E6;
 }
 /* CONTAINER STYLE*/
-.container{
+/*.container{
     margin-top:20px;
    margin-bottom:20px;
     display:inline-block;
@@ -109,14 +109,15 @@ h1{
     border-color:#333;
     border-style:solid;
 }
+*/
 .blogDate{
     padding-top: 10px;
-    background-color:#EEEEEE;
+    
 }
 /* BLOG CONTENT TEXT BOX */
 .blogContent{
     
-    width:80%;
+    width:85%;
     font-size:18px;
     line-height : 1.4; 
     color: #454545;
@@ -124,7 +125,8 @@ h1{
     border-style:none;
 border-radius:10px;
 border-color:#333;
-padding:25px;
+border-style:solid;
+padding:10px;
     background-color:#EEEEEE;
    
 }
