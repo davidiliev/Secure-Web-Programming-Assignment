@@ -1,0 +1,64 @@
+body{
+    display:block;
+    width:800px;
+    background-color:#ADD8E6;
+    color: #454545;
+    margin:auto;
+    align-content:center;
+    align-items: center;
+    text-align:center;
+
+}
+h1{
+  
+  
+    text-align:center;
+    background-color:#ADD8E6;
+}
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    padding: 0;
+    /*width: 100%;*/
+    width: 800px;
+}
+
+/* NAV BAR LINKS */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* NAV BAR INTERACTION */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+
+#loginTable{
+    margin-left:auto;
+    margin-right:auto;
+}
+.container{
+margin-top:20px;
+   margin-bottom:20px;
+    display:inline-block;
+   
+    height:80%;
+
+    background-color:#EEEEEE;
+    border-width:1px;
+    border-radius:10px;
+    border-color:#333;
+    border-style:solid;
+    margin-left:auto;
+    margin-right:auto;
+}
