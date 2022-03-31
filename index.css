@@ -56,14 +56,17 @@ body {
     padding-bottom: 50px;
     background-color: bisque; /* can remove this column and copy this color into body. */
 }
-
-h1 {
+.banner {
     /* TODO */
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
     height:178px; /* 218 - vertical padding*/
     background-image: url(books.jpg);
+}
+h1 {
+    text-align: center;
+    font-size: 56px;
 }
 
 #post {
