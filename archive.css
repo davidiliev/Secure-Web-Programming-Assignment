@@ -31,12 +31,12 @@
 }
 /* Mobile feature. TODO: Bug is kind of hiding it. Actually works */ 
 #toggle {
-    float:right;
     appearance: none;
+    float:right;
     margin: 0 0px 0 0;
     width: 49px;
     height: 49px;
-    display: block;
+    display: none;
 }
 
 /* Show that current page has been selected. NOTE: CHANGE number depending on page.*/
@@ -62,12 +62,17 @@ body {
     background-color: bisque; /* can remove this column and copy this color into body. */
 }
 
-h1 {
+.banner {
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
     height:178px; /* 218 - vertical padding*/
     background-image: url(books.jpg);
+}
+
+h1 {
+    text-align: center;
+    font-size: 56px;
 }
 
 #post {
@@ -95,11 +100,21 @@ h1 {
     color: grey;
 }
 
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 25px;
+    background-color: #454545;
+    color: white;
+    text-align: center;
+}
+
 /* Mobile displays */
 @media screen and (max-width: 800px) {
     /* Display toogle*/
     #toggle { 
-        background-color: aqua;
+        background-color: #576;
+        display: block;
     }
     /* Display first child whem menu is not active */
     #toggle:not(:checked) + #navOptions li:not(:nth-child(2)) { 
