@@ -1,53 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- reference for styles-->
-<link rel="stylesheet" href="registration_style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
-<head>
-    <meta charset="utf‐8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Assignment 1: Blong Frontend - Registration Page</title>
-</head>
+<html>
+  <head>
+      <meta charset="utf‐8">
+      <meta name="viewport" content="width-device-width, initial-scale=1.0">
+      <title>Assignment 1: Blong Frontend - Registration Page</title>
+    </head>
+<body>
 
-
-<div id="column">
-  <h1>TITLE</h1>
-  <!--Top-level navigation bar-->
-  <div class="navbar", position="vertical">
+  <h1>Register</h1>
+<!--Top Navigation Bar-->
+     <!--Top-level navigation bar-->
+     <div class="navbar", position="vertical">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="archive.html">Archive</a>
       <a href="create.html">Create</a>
       <a href="login.html">Login</a>
   </div>
-  
-  <!--main area to display posts. post generated via javascript "backend calls" -->
-  <div id="mainSection"></div>
-</div>
 
-<body>
   <!--FORM-->
-  <div class="form-container">
-    <form method="POST" action="index.html" id="register" class="input-group">
-        <div class="register-section">
-            <h1>Register</h1>
-            <div class="form-content1">
-              <label for="username">username</label>
-              <input type="text" placeholder="your username" required>
-            </div>
-            <div class="form-content2">
-              <label for="email">email address</label>
-              <input type="email" placeholder="your email address" required>
-            </div>
-            <div class="form-content3">
-              <label for="password">password</label>
-              <input type="password" placeholder="your password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-            </div>
-            <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
-        </div>
-    </div>
+  <link rel="stylesheet" href="registration_style.css">
+  <div class="column">
+    <div class="container">
+      <form method="POST" action="index.html" id="register" class="input-group">
+           
+        <table class = "RegisterTable">
+          <tr>
+            <td>Username:</td>
+            <td><input type="text" name="fname" id="fname" required></td>
+          </tr>
+          <tr>
+            <td>Email address</td>
+            <td>
+              <input type="email" name="email" id="email" required>
+            </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            </td>
+          </tr>
+          <td>Confirm Password</td>
+            <td>
+              <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            </td>
+          </tr>
+        </table>
+        <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
   </form>
 </div>
 </body>

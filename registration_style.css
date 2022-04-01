@@ -1,24 +1,21 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  body{
-    width: 800px;
-    color: #454545;
-    margin: auto;
-    background-color: powderblue; 
-    align-content: center;
-    align-items: center;         
-  }
+body{
+  display:block;
+  width:800px;
+  background-color:#ADD8E6;
+  color: #454545;
+  margin:auto;
+  align-content:center;
+  align-items: center;
+  text-align:center;
 
-  h1 {
-    text-align: center;
 }
+h1{
 
+
+  text-align:center;
+  background-color:#ADD8E6;
+  font-size:56px;
+}
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -30,7 +27,7 @@
   width: 800px;
 }
 
-/* Navigation bar links */
+/* NAV BAR LINKS */
 .navbar a {
   float: left;
   display: block;
@@ -40,37 +37,44 @@
   text-decoration: none;
 }
 
-/* Navigation bar interaction / colour change */
+/* NAV BAR INTERACTION */
 .navbar a:hover {
   background-color: #ddd;
   color: black;
 }
 
 
-.form-container {
-  text-align: left;
-  position: absolute;
-  top: 33%;
-  left: 50%;
-  display: grid;
-  transform: translate(-50%, -50%);
-  color: #f2f2f2;
-  margin: auto;
-  background-color: powderblue; 
-  align-content: center;
-  align-items: center;  
+#RegisterTable{
+  margin-left:auto;
+  margin-right:auto;
+}
+#loginButton{
+
+margin-left:auto;
+margin-right:auto;
+align-items:center;
+}
+.column {
+
+  width: 100%;
+  margin: 0;
+ 
+  /* padding-bottom: 50px; */
+  background-color: bisque;/* can remove this column and copy this color into body.*/
 }
 
-.form-container h1{
-  position: absolute;
-  top: 5%;
-  left: 3%;
-}
+.container{
+margin-top:20px;
+ margin-bottom:20px;
+  display:inline-block;
+ 
+  height:80%;
 
-.register-section{
-  text-align: center;
-  padding: 3rem;
-  width: 500px;
-  background-color: #454545; 
-  ;
+  background-color:#EEEEEE;
+  border-width:1px;
+  border-radius:10px;
+  border-color:#333;
+  border-style:solid;
+  margin-left:auto;
+  margin-right:auto;
 }
