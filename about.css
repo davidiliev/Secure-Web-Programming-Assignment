@@ -66,6 +66,23 @@ h1 {
     background-image: url(books.jpg);
 }
 
+#author_heading{
+    position: relative;
+    top: 10px;
+}
+
+th{
+    
+    text-align: left;
+    padding: 0 20px 0 0;
+    text-decoration: underline;
+}
+
+table{
+    padding-bottom: 20px;
+}
+
+
 #post {
     /*margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
     margin: 5% 5% 0 5%;
