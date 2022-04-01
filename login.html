@@ -2,43 +2,49 @@
 <html>
   <head>
     <title>Login</title>
-  </head>
-<body>
-
-  <h1>Login</h1>
-<!--Top Navigation Bar-->
-     <!--Top-level navigation bar-->
-     <div class="navbar", position="vertical">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="archive.html">Archive</a>
-      <a href="create.html">Create</a>
-      <a href="login.html">Login</a>
-  </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reading Blog</title>
     <link rel="stylesheet" href="login.css">
-    <div class = column>
-      <div class = container>
+  </head>
+  <body>
+  <h1>Login</h1>
+    <div class ="column">
+      <div class="banner"></div>
+      <!--Top-level navigation bar-->
+      <div id="navbar">                
+          <input type="checkbox" id="toggle" unchecked></input>               
+          <ul id="navOptions">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="archive.html">Archive</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="create.html">Create</a></li>
+              <li><a href="login.html">Login</a></li>
+          </ul>
+      </div>
+      <div class ="container">
         <form method="POST" action="index.html" id="loginForm" class="input-group">
         <table class = "loginTable">
           <tr>
             <td>Username:</td>
             <td><input type="text" name="fname" id="fname" required></td>
-          </tr>
-        
+          </tr>        
           <tr>
             <td>Password</td>
             <td>
               <input type="password" name="password" id="password" required>
             </td>
-          </tr>
-          
-          
+          </tr>       
         </table>
         <input submit type="submit" value="Login" />
         </form>
         <form method="POST" action="registration.html">
           <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
         </form>
+      </div>
     </div>
-    </body>
+    <div class="footer">
+      <p>UTAS   /    Assignment 1    /    Group 1</p>
+    </div>
+  </body>
 </html>
