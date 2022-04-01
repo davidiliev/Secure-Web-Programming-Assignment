@@ -30,7 +30,7 @@
 <body>
   <!--FORM-->
   <div class="form-container">
-    <form method="POST" action="login.html" id="register" class="input-group">
+    <form method="POST" action="index.html" id="register" class="input-group">
         <div class="register-section">
             <h1>Register</h1>
             <div class="form-content1">
@@ -43,7 +43,7 @@
             </div>
             <div class="form-content3">
               <label for="password">password</label>
-              <input type="password" placeholder="your password" required minlength="6">
+              <input type="password" placeholder="your password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             </div>
             <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
         </div>

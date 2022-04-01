@@ -64,6 +64,7 @@ body {
     height:178px; /* 218 - vertical padding*/
     background-image: url(books.jpg);
 }
+
 h1 {
     text-align: center;
     font-size: 56px;
@@ -96,6 +97,17 @@ h1 {
 /* TODO: Remove? Consider font, colour, size? let #post handle most? */
 #post > p {
 }
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 25px;
+  background-color: #454545;
+  color: white;
+  text-align: center;
+}
+
+
 
 /* Mobile displays */
 @media screen and (max-width: 800px) {
