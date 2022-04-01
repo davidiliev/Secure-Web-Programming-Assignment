@@ -14,6 +14,7 @@ h1{
   
     text-align:center;
     background-color:#ADD8E6;
+    font-size:56px;
 }
 .navbar {
     overflow: hidden;
@@ -53,6 +54,15 @@ margin-left:auto;
 margin-right:auto;
 align-items:center;
 }
+.column {
+
+    width: 100%;
+    margin: 0;
+   
+    /* padding-bottom: 50px; */
+    background-color: bisque;/* can remove this column and copy this color into body.*/
+}
+
 .container{
 margin-top:20px;
    margin-bottom:20px;
