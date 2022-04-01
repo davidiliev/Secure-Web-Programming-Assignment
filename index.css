@@ -30,7 +30,7 @@
     list-style-type: none;
 }
 
-/* Mobile feature. TODO: Bug is kind of hiding it. Actually works */ 
+/* Mobile feature. */ 
 #toggle {
     appearance: none;
     float:right;
@@ -62,7 +62,6 @@ body {
 }
 
 .banner {
-    /* TODO */
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
