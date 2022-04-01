@@ -7,12 +7,12 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>     
+        <h1>Title</h1>
         <div id="column">
-            <h1>Title</h1>
+            <div class="banner"></div>
             <!--Top-level navigation bar-->
             <div id="navbar">
-                <input type="checkbox" id="toggle" unchecked/>    
-                <!-- Page links in nav bar. Put this page as the first list item. -->    
+                <input type="checkbox" id="toggle" unchecked/>      
                 <ul id="navOptions">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="archive.html">Archive</a></li>
@@ -25,8 +25,10 @@
             <!--main area to display posts. post generated via javascript "backend calls" -->
             <div id="mainSection"></div>
         </div>
-        <!--TODO: Floating 'scroll-up' button-->
 
+        <div class="footer">
+            <p>UTAS   /    Assignment 1    /    Group 1</p>
+          </div>
         <script src="index.js"></script>
     </body>
 </html>
