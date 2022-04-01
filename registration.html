@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="utf‐8">
+      <meta charset="UTF-8">
       <meta name="viewport" content="width-device-width, initial-scale=1.0">
-      <title>Assignment 1: Blong Frontend - Registration Page</title>
+      <title>Registration Page</title>
       <link rel="stylesheet" href="registration_style.css">
     </head>
 <body>
-
-  <h1>Register</h1>
-<!--Top Navigation Bar-->
-     <!--Top-level navigation bar-->
-     <div class="navbar", position="vertical">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="archive.html">Archive</a>
-      <a href="create.html">Create</a>
-      <a href="login.html">Login</a>
-  </div>
-
-  <!--FORM-->
-  
+  <h1>Register</h1>  
   <div class="column">
+    <div class="banner"></div>
+    <!--Top-level navigation bar-->
+    <div id="navbar">                
+        <input type="checkbox" id="toggle" unchecked></input>               
+        <ul id="navOptions">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="archive.html">Archive</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="create.html">Create</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
     <div class="container">
-      <form method="POST" action="index.html" id="register" class="input-group">
-           
+      <form method="POST" action="index.html" id="register" class="input-group">           
         <table class = "RegisterTable">
           <tr>
             <td>Username:</td>
@@ -49,8 +47,12 @@
           </tr>
         </table>
         <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
-  </form>
-</div>
+      </form>
+    </div>
+  </div>
+  <div class="footer">
+    <p>UTAS   /    Assignment 1    /    Group 1</p>
+  </div>
 </body>
 
 </html>
