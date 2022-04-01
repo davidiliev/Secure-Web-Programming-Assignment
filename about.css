@@ -5,10 +5,11 @@
     position: sticky;
     top: 0;
     padding: 0;
-    margin:0 0 50px 0;
-}
-/* Hyperlinks */
-#navbar a {
+    margin:0 0 15px 0;
+  }
+  
+  /* Hyperlinks */
+  #navbar a {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -16,30 +17,39 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: large;
-}
-/* Hover state */
-#navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-/* */
-#navOptions {
-    float: left;
-    display: contents;
-}
-/* Mobile feature. TODO: Bug is kind of hiding it. Actually works */ 
-#toggle {
-    float:right;
-    appearance: none;
-    margin: 0 0px 0 0;
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-/* unordered list */
-#navOptions {
+  }
+  
+  /* Hover state */
+  #navbar a:hover {
+    background-color: #555;
+  }
+  
+  /* unordered list */
+  #navOptions {
+    padding: 0;
+    margin: 0;    
+    display: flex;
+    flex-direction: row;
     list-style-type: none;
+  }
+  
+  /* Mobile feature. */ 
+  #toggle {
+    appearance: none;
+    float:right;
+    margin: 0 0px 0 0;
+    width: 49px;
+    height: 49px;
+    display: none;
+  }
+  
+
+/* Show that current page has been selected. NOTE: CHANGE number depending on page.*/
+#navOptions li:nth-of-type(3) {
+    pointer-events: none;
+    background-color: #555;
 }
+
 
 /* Other elements */
 body {
@@ -57,14 +67,21 @@ body {
     background-color: bisque; /* can remove this column and copy this color into body. */
 }
 
-h1 {
-    /* TODO */
+.banner {
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
     height:178px; /* 218 - vertical padding*/
     background-image: url(books.jpg);
-}
+  }
+
+  
+
+  h1{ 
+    text-align:center;
+    font-size:56px;
+  }
+  
 
 #author_heading{
     position: relative;
@@ -108,23 +125,53 @@ table{
     color: grey;
 }
 
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 25px;
+    background-color: #454545;
+    color: white;
+    text-align: center;
+}
+
 /* Mobile displays */
 @media screen and (max-width: 800px) {
-/* Display toogle*/
-#toggle { 
-    background-color: aqua;
-}
-/* Display first child ... took a while */
-#toggle:not(:checked) + #navOptions li:not(:first-child) { 
-    display:none;
-}
-/* Expand contents */ 
-#toggle:checked + #navOptions {
-    display:contents;
-}
-/* Prevents some visual nonsense */
-#toggle:checked + #navOptions li a {
-    float:none;
-    text-align: left;
-}
+    /* Display toogle*/
+    #toggle { 
+        background-color: #576;
+        display: block;
+    }
+    /* Display first child whem menu is not active */
+    #toggle:not(:checked) + #navOptions li:not(:nth-child(3)) { 
+        display:none;
+    }
+
+    /* Prevent user from clicking on the only link when menu is not active */
+    #toggle:not(:checked) + #navOptions { 
+        pointer-events: none;
+    }
+
+    /* Expand contents  when menu active*/ 
+    #toggle:checked + #navOptions {
+        display:flex;
+        flex-direction: column;        
+    }
+
+    /* Puts other pages below top of the open menu, allow user to click anywhere on a row */
+    #navOptions li:not(:nth-of-type(3)) a {
+        width:100%;
+        padding-right:32px; /* Work on a better approach..*/
+        text-align: left;
+    }
+
+    /* Puts current page at the top of the open menu */
+    #toggle:checked + #navOptions li:nth-of-type(3) {
+        order: 1;
+        pointer-events: none;
+    }
+
+    /* Puts other pages below top of the open menu */
+    #toggle:checked + #navOptions li:not(:nth-of-type(3)) {
+        order: 2;
+    }
 }
