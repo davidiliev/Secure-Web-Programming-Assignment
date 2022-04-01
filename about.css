@@ -88,41 +88,15 @@ body {
     top: 10px;
 }
 
-th{
-    
+th{    
     text-align: left;
     padding: 0 20px 0 0;
     text-decoration: underline;
 }
 
 table{
+    
     padding-bottom: 20px;
-}
-
-
-#post {
-    /*margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
-    margin: 5% 5% 0 5%;
-    width:auto;
-    /*padding: 8px;*/
-    padding: 8px 32px;
-    border: #333;
-    border-radius: 10px;
-    border-width: 1px;
-    border-style: solid;
-    background-color: #EEEEEE;
-    line-height : 1.4; 
-    font-size : large; /* TODO: Agree on font size*/
-}
-
-/* The title of a post */
-#post > h2 {
-    text-align: center;
-}
-
-/* The date within a post*/
-#post > #date { /*While all dates are children of posts this heads with readability. */
-    color: grey;
 }
 
 .footer {
