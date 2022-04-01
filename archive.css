@@ -19,27 +19,32 @@
 }
 /* Hover state */
 #navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #555;
 }
-/* */
+/* unordered list */
 #navOptions {
-    float: left;
-    display: contents;
+    padding: 0;
+    margin: 0;    
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
 }
 /* Mobile feature. TODO: Bug is kind of hiding it. Actually works */ 
 #toggle {
     float:right;
     appearance: none;
     margin: 0 0px 0 0;
-    width: 50px;
-    height: 50px;
+    width: 49px;
+    height: 49px;
     display: block;
 }
-/* unordered list */
-#navOptions {
-    list-style-type: none;
+
+/* Show that current page has been selected. NOTE: CHANGE number depending on page.*/
+#navOptions li:nth-of-type(2) {
+    pointer-events: none;
+    background-color: #555;
 }
+
 
 /* Other elements */
 body {
@@ -58,7 +63,6 @@ body {
 }
 
 h1 {
-    /* TODO */
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
@@ -83,7 +87,7 @@ h1 {
 
 /* The title of a post */
 #post > h2 {
-    text-align: center;
+    text-align: left;
 }
 
 /* The date within a post*/
@@ -93,21 +97,41 @@ h1 {
 
 /* Mobile displays */
 @media screen and (max-width: 800px) {
-/* Display toogle*/
-#toggle { 
-    background-color: aqua;
-}
-/* Display first child ... took a while */
-#toggle:not(:checked) + #navOptions li:not(:first-child) { 
-    display:none;
-}
-/* Expand contents */ 
-#toggle:checked + #navOptions {
-    display:contents;
-}
-/* Prevents some visual nonsense */
-#toggle:checked + #navOptions li a {
-    float:none;
-    text-align: left;
-}
+    /* Display toogle*/
+    #toggle { 
+        background-color: aqua;
+    }
+    /* Display first child whem menu is not active */
+    #toggle:not(:checked) + #navOptions li:not(:nth-child(2)) { 
+        display:none;
+    }
+
+    /* Prevent user from clicking on the only link when menu is not active */
+    #toggle:not(:checked) + #navOptions { 
+        pointer-events: none;
+    }
+
+    /* Expand contents  when menu active*/ 
+    #toggle:checked + #navOptions {
+        display:flex;
+        flex-direction: column;        
+    }
+
+    /* Puts other pages below top of the open menu, allow user to click anywhere on a row */
+    #navOptions li:not(:nth-of-type(2)) a {
+        width:100%;
+        padding-right:32px; /* Work on a better approach..*/
+        text-align: left;
+    }
+
+    /* Puts current page at the top of the open menu */
+    #toggle:checked + #navOptions li:nth-of-type(2) {
+        order: 1;
+        pointer-events: none;
+    }
+
+    /* Puts other pages below top of the open menu */
+    #toggle:checked + #navOptions li:not(:nth-of-type(2)) {
+        order: 2;
+    }
 }

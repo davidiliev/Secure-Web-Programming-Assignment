@@ -56,18 +56,14 @@ body {
     padding-bottom: 50px;
     background-color: bisque; /* can remove this column and copy this color into body. */
 }
-.banner {
+
+h1 {
     /* TODO */
     text-align: center;
     margin: 0;
     padding: 20px 0 20px 0;
     height:178px; /* 218 - vertical padding*/
     background-image: url(books.jpg);
-}
-
-h1 {
-    text-align: center;
-    font-size: 56px;
 }
 
 #post {
@@ -97,17 +93,6 @@ h1 {
 /* TODO: Remove? Consider font, colour, size? let #post handle most? */
 #post > p {
 }
-
-.footer {
-  position: relative;
-  left: 0;
-  bottom: 25px;
-  background-color: #454545;
-  color: white;
-  text-align: center;
-}
-
-
 
 /* Mobile displays */
 @media screen and (max-width: 800px) {

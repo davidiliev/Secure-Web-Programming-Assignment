@@ -3,13 +3,14 @@
  */
 
 // Class to hold post data recieved from database.
-class ArchivedPost {
+class Post {
     title;
     date;
     content;
-    constructor(title, date) {
+    constructor(title, date, content) {
         this.title = title;
         this.date = date;
+        this.content = content;
     }
 }
 
@@ -27,16 +28,18 @@ function retrieveData() {
     // hard code. Assume data was sorted with a sql query.
     // convert date to specification.
     let posts = [
-        new ArchivedPost("Generic graduate attributes",
-        "10 February 2022"),
-        new ArchivedPost("Computing facilities",
-        "6 February 2022"),
-        new ArchivedPost("Safety and Wellbeing",
-        "ArchivedPost"),
-        new ArchivedPost("Academic Integrity Training Module",
-        "20 January 2022"),
-        new ArchivedPost("Further information and assistance",
-        "20 January 2022")
+        new Post("Introduction",
+        "7 March 2022", 
+        "This unit provides students with the knowledge, understanding, and skills ..."),
+        new Post ("Communication",
+        "2 March 2022",
+        "Updates and announcements will be posted to the unit MyLO  ... "),
+        new Post("Unit web site", 
+        "27 February 2022",
+        "MyLO is the online learning environment at the University of Tasmania ..."),
+        new Post("Developing attainment of SFIA", 
+        "17 February 2022", 
+        "As an accredited Australian Computing Society (ACS) course, ...")
     ]    
     return posts;
 }
@@ -44,11 +47,12 @@ function retrieveData() {
 
 /**
  * Function to assist with building a list of html posts. 
- * @param {ArchivedPost} data - A post retrieved from database.
+ * @param {Post} data - A post retrieved from database.
  * @returns a post document element.
  */
 function createPost(data) {
-    let post = document.createElement("post");
+    let post = document.createElement("div");
+    post.setAttribute("id", "post");
 
     // Create Post title as heading
     let item = document.createElement('h2'); // TODO: try different sizes OR custom tag.
@@ -57,19 +61,22 @@ function createPost(data) {
     
     // Create Post date
     item = document.createElement('p');
+    item.setAttribute("id", "date");
     item.append(data.date);
     post.appendChild(item);
-
-    // ALTERNATIVELY: display in a table.
-    // title aligned left within left cell
-    // date aligned right within right cell
     
+    // Setup for creating post content.    
+    // Create Post date
+    item = document.createElement('p');
+    item.append(data.content);
+    post.appendChild(item);
     return post;
 }
 
-// Fill up page with posts.
+// Fill up mainSectoin div element with posts.
 const mainDiv = document.getElementById("mainSection");
 const posts = retrieveData(); 
+
 for (var i = 0; i < posts.length; i++)
 {
     mainDiv.appendChild(createPost(posts[i]));
