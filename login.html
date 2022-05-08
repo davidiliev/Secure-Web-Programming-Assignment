@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reading Blog</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <!--refencing a whole sheet for a hamburger menu...-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascript/navigation.js"></script>
   </head>
   <body>
   <h1>Tom, Dick & Harry's</h1>
@@ -13,16 +15,17 @@
 
       <div class="banner"></div>
       <!--Top-level navigation bar-->
-      <div id="navbar">                
-          <input type="checkbox" id="toggle" unchecked></input>               
-          <ul id="navOptions">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="archive.html">Archive</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="create.html">Create</a></li>
-              <li><a href="login.html">Login</a></li>
-          </ul>
-      </div>
+      <div id="navbar" class="navbarclass">                            
+        <ul id="navOptions">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="archive.html">Archive</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="create.html">Create</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
+            <i class="fa fa-bars"></i></button>  
+    </div>
 
       <div class ="container">
         <!--Login Form-->
@@ -43,7 +46,7 @@
         <input submit type="submit" value="Login" />
         </form>
         <form method="POST" action="registration.html">
-          <button id="myButton" class="submit-btn">Register <i class="fas fa-angle-double-right"></i></button>
+          <button id="myButton" class="submit-btn">Register</button>
         </form>
       </div>
     </div>

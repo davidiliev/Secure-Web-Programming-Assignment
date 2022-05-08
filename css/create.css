@@ -1,15 +1,18 @@
 /* Navigation bar */ 
 #navbar {
-    overflow: hidden;
+    display: inline-block;
+    width: 100%;
     background-color: #333;
-    position: sticky;
-    top: 0;
-    padding: 0;
-    margin:0 0 25px 0;
 }
-/* Hyperlinks */
+
+#navOptions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 #navbar a {
-    float: left;
+    float: left;    
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -17,33 +20,32 @@
     text-decoration: none;
     font-size: large;
 }
-/* Hover state */
+
 #navbar a:hover {
     background-color: #555;
 }
-/* unordered list */
-#navOptions {
-    padding: 0;
-    margin: 0;    
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-}
-/* Mobile feature. */ 
-#toggle {
-    appearance: none;
-    float:right;
-    margin: 0 0px 0 0;
-    width: 49px;
-    height: 49px;
-    display: none;
-}
+
 /* Show that current page has been selected. NOTE: CHANGE number depending on page.*/
-#navOptions li:nth-of-type(4) {
+#navOptions li:nth-child(4) {/*li:first-child {*/
     pointer-events: none;
     background-color: #555;
 }
+            
+#navbar button {
+    float: right;                
+    padding: 14px 16px;
+    font-size: large;                
+    border: 0;
+    background-color: #333;
+    color: white;
+}
 
+/*  Merge to top */
+.navbarclass .icon {
+    display: none;
+}
+
+/* Common elements */
 body{
     max-width:800px;
     background-color:powderblue;
@@ -64,7 +66,7 @@ body{
     margin: 0;
     padding: 20px 0 20px 0;
     height:178px; /* 218 - vertical padding*/
-    background-image: url(books.jpg);
+    background-image: url(../images/books.jpg);
 }
 
 .footer {
@@ -138,43 +140,32 @@ textarea {
 }
 
 /* Mobile displays */
+#navOptions li:nth-child(4) a {background-color: #555;}
+
 @media screen and (max-width: 800px) {
-    /* Display toogle*/
-    #toggle { 
-        background-color: #576;
-        display: block;
-    }
-    /* Display first child whem menu is not active */
-    #toggle:not(:checked) + #navOptions li:not(:nth-child(4)) { 
-        display:none;
-    }
+    #navOptions li:not(:nth-child(4)) {display: none;}
+    .navbarclass .icon {
+    float: right;
+    display: block;
+  }
+}
+@media screen and (max-width: 800px) {
+  .navbarclass.responsive {position: relative;}
+  .navbarclass.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
-    /* Prevent user from clicking on the only link when menu is not active */
-    #toggle:not(:checked) + #navOptions { 
-        pointer-events: none;
-    }
+  .navbarclass.responsive #navOptions li {
+    padding: 0;
+    margin: 0;    
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+  }  
 
-    /* Expand contents  when menu active*/ 
-    #toggle:checked + #navOptions {
-        display:flex;
-        flex-direction: column;        
-    }
-
-    /* Puts other pages below top of the open menu, allow user to click anywhere on a row */
-    #navOptions li:not(:nth-of-type(4)) a {
-        width:100%;
-        padding-right:32px; /* Work on a better approach..*/
-        text-align: left;
-    }
-
-    /* Puts current page at the top of the open menu */
-    #toggle:checked + #navOptions li:nth-of-type(4) {
-        order: 1;
-        pointer-events: none;
-    }
-
-    /* Puts other pages below top of the open menu */
-    #toggle:checked + #navOptions li:not(:nth-of-type(4)) {
-        order: 2;
-    }
+  .navbarclass.responsive #navOptions li  a{
+      text-align:left;
+  }
 }

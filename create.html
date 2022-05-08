@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-
-<head>
-   <link rel="stylesheet" href="create.css">
-    <meta charset="UTF">
+<html>
+  <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create a Post</title>
-</head>
-
+    <link rel="stylesheet" href="css/create.css">
+    <!--refencing a whole sheet for a hamburger menu...-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascript/navigation.js"></script>
+  </head>
+</html>
 <body>
   <h1>Tom, Dick & Harry's</h1> 
   <div id ="column">
     <div class="banner"></div>
-
-    <div id="navbar">
       <!--Top-level navigation bar-->
-      <input type="checkbox" id="toggle" unchecked/>    
-      <ul id="navOptions">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="archive.html">Archive</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="create.html">Create</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </div>
-
+      <div id="navbar" class="navbarclass">                            
+        <ul id="navOptions">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="archive.html">Archive</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="create.html">Create</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
+            <i class="fa fa-bars"></i></button>  
+      </div>
     <div class="row">
-<!-- Blog Content Form, Title, Date, Content-->
+    <!-- Blog Content Form, Title, Date, Content-->
       <div class="formElements">
         <form method="post" role="form"
         >
@@ -49,5 +51,5 @@
   </div>
   <div class="footer">
     <p>UTAS   /    Assignment 1    /    Group 1</p>
-  </div>
+  </div> 
 </body>
