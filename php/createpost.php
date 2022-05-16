@@ -1,7 +1,8 @@
 <?php 
-
+session_start();
 include 'dbconn.php';
-$userName = "testUsername";
+
+$userName = htmlspecialchars($_SESSION['userId']);
 $title = htmlspecialchars($_POST['title']);
 $date = htmlspecialchars($_POST['dateName']);
 $content = htmlspecialchars($_POST['content']);
