@@ -26,7 +26,7 @@ $insertUser = "INSERT INTO User (username, password, role)
                 VALUES('$username','$password','$role')";
 
     mysqli_query($conn,$insertUser);
-                header('Location: ../index.html');
+                header('Location: ../index.php');
 
 
                 //TODO: ERROR MESSAGES

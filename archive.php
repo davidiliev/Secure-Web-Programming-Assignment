@@ -1,13 +1,10 @@
 <?php
 /*
-    TODO:
-    Add author name to the post
-    Add css for author name
-    Separate paragraphs in a post
+    TODO: find better retrieval query
+    css to pad below a post(?)
 */
 
 session_start();
-// connect to database
 require "php/dbconn.php";
 
 // get the first four recent posts
@@ -15,7 +12,9 @@ function displayPosts() {
     global $conn;
     // Query Post table for the 4 mosts recent rows. Uses MariaDB syntax
     // TODO: Fetch username
-    $sql_query = "SELECT title, content, date FROM Post ORDER BY date DESC LIMIT 4";
+    //$sql_query = "SELECT title, date FROM Post ORDER BY date DESC OFFSET 4 ROWS"; // db version; can't use OFFSET 4 ROWS;
+    // Dumb solution
+    $sql_query = "SELECT title, date FROM Post ORDER BY date DESC LIMIT 4,9999";
 
     // upon successful insertion, close database connection
     $result = $conn->query($sql_query);
@@ -24,11 +23,12 @@ function displayPosts() {
         while ($row = $result->fetch_assoc()) {
             // TODO separate paragraphs 
             // TODO append author name
-            echo '<div id="post"><h2>'.$row["title"].'</h2><p id="date">'.$row["date"].'</p><p>'.$row["content"].'</p></div>';
+            echo '<div id="post"><h2>'.$row["title"].'</h2><p id="date">'.$row["date"].'</p></div>';
             }
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +36,10 @@ function displayPosts() {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tom, Dick & Harry's</title>
-        <link rel="stylesheet" href="css/index.css">
+        <title>Archive</title>
+        <link rel="stylesheet" href="css/archive.css">
         <link rel="stylesheet" href="css/shared.css">
-        <!--referencing a whole sheet for a hamburger menu...-->
+        <!--refencing a whole sheet for a hamburger menu...-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="javascript/navigation.js"></script>
     </head>
@@ -48,34 +48,26 @@ function displayPosts() {
         <div id="column">
             <div class="banner"></div>
             <!--Top-level navigation bar-->
-            <div id="navbar" class="navbarclass">  
+            <div id="navbar" class="navbarclass">                            
                 <ul id="navOptions">
-                    <!--Generate bar based on user role-->
                     <?php  
                     if (isset($_SESSION["userRole"])) {
                         if ($_SESSION["userRole"]=="Author") {
                             // display index, archive, create, about, logout
-                            echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
-                            <li><a href="archive.php">Archive</a></li>
+                            echo '<li><a href="index.php">Home</a></li>
+                            <li id="navCurPageLi"><a href="archive.php">Archive</a></li>
                             <li><a href="create.html">Create</a></li>
                             <li><a href="about.php">About</a></li>
                             <li><a href="logout.php">Log out</a></li>'; 
 
                         } else { // Member
                             // display index, archive, about, logout
-                            echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
-                            <li><a href="archive.php">Archive</a></li>
+                            echo '<li><a href="index.php">Home</a></li>
+                            <li id="navCurPageLi"><a href="archive.php">Archive</a></li>
                             <li><a href="about.php">About</a></li>
                             <li><a href="logout.php">Log out</a></li>'; 
                         }
-                    } else { // Visitor
-                        // display index, about, login, register
-                        // TODO: include replace .html with .php when required.
-                        echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About</a></li>
-                        <li><a href="login.php">Login</a></li>
-                        <li><a href="registration.html">Register</a></li>';      
-                    }
+                    } // No option for visitor. Can't access this page without a userRole. 
                     ?>
                 </ul>
                 <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
@@ -84,10 +76,8 @@ function displayPosts() {
             <div id="mainSection">
                 <?php displayPosts()?>
             </div>
-        </div>
-
         <div class="footer">
             <p>UTAS   /    Assignment 1    /    Group 1</p>
-          </div>
+          </div>  
     </body>
 </html>

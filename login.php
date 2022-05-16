@@ -4,19 +4,15 @@
     TODO:
     Sanatise user input
     Give feedback for failed log in attempt
-
-    Other todo:
-    navbar
-
 */
 
 
-session_start();
 require "php/dbconn.php";
+session_start();
 
 $invalidLogin = false;
-if (isset($_POST["userName"]) && isset($_POST["password"])) {
-    $username = $_POST["userName"];
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    $username = $_POST["username"];
     $password = $_POST["password"];
 
     // sanatise here?
@@ -24,7 +20,6 @@ if (isset($_POST["userName"]) && isset($_POST["password"])) {
     // Complete this if statement
     if (authenticate($username, $password)) {
       $_SESSION["userId"] = $username;
-
       header("Location: index.php");
       exit();
     }
@@ -44,7 +39,7 @@ function authenticate($user, $pass)
     if($result) { // connection established
       if($result->num_rows == 1) { // query found
         $row = $result->fetch_assoc();
-        if ($row['username'] == $user && $row['password'] == $pass) {
+        if ($row['userName'] == $user && $row['password'] == $pass) {
             $_SESSION["userRole"] = $row['role'];
             return true;
         }
@@ -52,12 +47,7 @@ function authenticate($user, $pass)
     }
     return false;
 }
-
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -80,10 +70,9 @@ function authenticate($user, $pass)
       <div id="navbar" class="navbarclass">                            
         <ul id="navOptions">
             <li><a href="index.php">Home</a></li>
-            <li><a href="archive.html">Archive</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="create.html">Create</a></li>
+            <li><a href="about.php">About</a></li>
             <li id='navCurPageLi'><a href="login.php">Login</a></li>
+            <li><a href="registration.html">Register</a></li>
         </ul>
         <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
             <i class="fa fa-bars"></i></button>  
@@ -96,7 +85,7 @@ function authenticate($user, $pass)
         <table class = "loginTable"> 
           <tr>
             <td>Username:</td>
-            <td><input type="text" name="fname" id="fname" required></td>
+            <td><input type="text" name="username" id="username" required></td>
           </tr>        
           <tr>
             <td>Password</td>
@@ -106,9 +95,6 @@ function authenticate($user, $pass)
           </tr>       
         </table>
         <input submit type="submit" value="Login" />
-        </form>
-        <form method="POST" action="registration.html">
-          <button id="myButton" class="submit-btn">Register</button>
         </form>
       </div>
     </div>

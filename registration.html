@@ -10,62 +10,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="javascript/navigation.js"></script>
     </head>
-<<<<<<< Updated upstream
-    <body>
-        <h1>Tom, Dick & Harry's</h1>
-        <div class="column">
-            <div class="banner"></div>
-            <!--Top-level navigation bar-->
-            <div id="navbar" class="navbarclass">
-                <ul id="navOptions">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="archive.html">Archive</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="create.html">Create</a></li>
-                    <li id='navCurPageLi'><a href="login.html">Login</a></li>
-                </ul>
-                <button href="javascript:void(0);" class="icon" onclick="mobileMenu()">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <div class="container">
-                <form method="POST" action="index.html" id="register" class="input-group">
-                    <table class = "RegisterTable">
-                        <tr>
-                            <td>Username:</td>
-                            <td><input type="text" name="fname" id="fname" required></td>
-                        </tr>
-                        <tr>
-                            <td>Email address</td>
-                            <td>
-                                <input type="email" name="email" id="email" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td>
-                                <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Confirm Password</td>
-                            <td>
-                                <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                            </td>
-                        </tr>
-                    </table>
-                    <button id="myButton" class="submit-btn">Register</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer">
-            <p>
-                UTAS   /    Assignment 1    /    Group 1
-            </p>
-        </div>
-    </body>
-</html>
-=======
 <body>
   <h1>Tom, Dick & Harry's</h1>  
   <div class="column">
@@ -73,11 +17,10 @@
     <!--Top-level navigation bar-->
     <div id="navbar" class="navbarclass">                            
       <ul id="navOptions">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="archive.html">Archive</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="create.html">Create</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="about.php">About</a></li>
+          <li><a href="login.php">Login</a></li>
+          <li  id='navCurPageLi'><a href="registration.html">Register</a></li>
       </ul>
       <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
           <i class="fa fa-bars"></i></button>  
@@ -120,6 +63,4 @@
     <p>UTAS   /    Assignment 1    /    Group 1</p>
   </div>
 </body>
-
 </html>
->>>>>>> Stashed changes
