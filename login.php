@@ -26,9 +26,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $data = htmlspecialchars($data);
     return $data;
   }
-
     $username = validate($_POST["username"]);
     $password = validate($_POST["password"]);
+
 
   //checks if username & password is empty
   if (empty($username)) {
@@ -38,7 +38,11 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     header("Location: login.php?error=Password is required");
     exit();
   }else{
-    $sql
+    $sql = "SELECT * FROM User WHERE Username='$username' AND password='$pass'";
+
+    $result = mysqli_query($, $sql)
+
+    
   }
   
 
