@@ -1,5 +1,6 @@
 <?php
 
+
 /*
     TODO:
     Sanatise user input
@@ -7,19 +8,43 @@
 */
 
 
-require "php/dbconn.php";
+require_once "php/dbconn.php";
 session_start();
+
+
+
+
 
 $invalidLogin = false;
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
 
-    // sanatise here?
+
+  //validate and sanatise user input
+  function validate($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+    $username = validate($_POST["username"]);
+    $password = validate($_POST["password"]);
+
+  //checks if username & password is empty
+  if (empty($username)) {
+      header("Location: login.php?error=User Name is required");
+      exit();
+  }else if(empty($pass)){
+    header("Location: login.php?error=Password is required");
+    exit();
+  }else{
+    $sql
+  }
+  
 
     // Complete this if statement
-    if (authenticate($username, $password)) {
-      $_SESSION["userId"] = $username;
+    if (authenticate($usernameSanitized, $passwordSanitized)) {
+      $_SESSION["userId"] = $usernameSanitized;
       header("Location: index.php");
       exit();
     }
