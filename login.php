@@ -1,10 +1,10 @@
-<?php
+<<?php
 
 
 /*
     TODO:
-    Sanatise user input
-    Give feedback for failed log in attempt
+    Give feedback for failed log in attempt -- fix this, its somewhat done
+	
 */
 
 
@@ -19,6 +19,7 @@ $invalidLogin = false;
 if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 
+
   //validate and sanatise user input
   function validate($data){
     $data = trim($data);
@@ -30,30 +31,43 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $password = validate($_POST["password"]);
 
 
-  //checks if username & password is empty
+ //checks if username & password is empty --- NOT CURRENTLY WORKING
   if (empty($username)) {
       header("Location: login.php?error=User Name is required");
       exit();
-  }else if(empty($pass)){
-    header("Location: login.php?error=Password is required");
-    exit();
+  }else if(empty($password)){
+      header("Location: login.php?error=Password is required");
+      exit();
   }else{
-    $sql = "SELECT * FROM User WHERE Username='$username' AND password='$pass'";
+      $sql = "SELECT * FROM User WHERE userName='$username' AND 
+        password='$password'";
 
-    $result = mysqli_query($, $sql)
+      $result = mysqli_query($conn, $sql);
+
+      $row = mysqli_fetch_assoc($result);
+    	if ($row['userName'] === $username && $row['password'] === $password) {
+        	$SESSION['userName'] = $row['userName'];
+       		$SESSION['role'] = $row['role'];
+        	header("Location: index.php");
+        }else{
+        	header("Location: index.php?error=Incorrect User name or Password");
+        	echo("failed login");
+        	exit();
+        }
+ }
 
     
-  }
+
   
 
     // Complete this if statement
-    if (authenticate($usernameSanitized, $passwordSanitized)) {
-      $_SESSION["userId"] = $usernameSanitized;
+    if (authenticate($username, $password)) {
+      $_SESSION["userId"] = $username;
       header("Location: index.php");
       exit();
     }
-}
 
+}
 // Queries the DBMS with the supplied user details
 // Returns true on successful authentication and false otherwise.
 function authenticate($user, $pass)
