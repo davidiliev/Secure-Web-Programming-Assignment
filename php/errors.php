@@ -1,4 +1,4 @@
-// IDEA for error display https://codewithawa.com/posts/complete-user-registration-system-using-php-and-mysql-database
+
 
 <?php  if (count($errors) > 0) : ?>
 <style> 
