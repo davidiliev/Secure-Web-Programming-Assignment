@@ -17,71 +17,28 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = validate($_POST["username"]);
     $password = validate($_POST["password"]);
 
-
-
-
- // NEEDS FIXING - Copy of password checker below but better??
-
   if (empty($username)) {
   		array_push($errors, "User Name is required!");
   }else if(empty($password)){
   		array_push($errors, "Password is required!");
   }else{
-  
-  
+    
   // verify password
-  $hash = "$1$";
-  
- 	$sql = "SELECT * FROM User WHERE userName='$username'";
+ 	$sql = "SELECT * FROM User WHERE username='$username'";
         $result = mysqli_query($conn, $sql);
-        if ($result->num_rows === 1) {
+        if ($result->num_rows == 1) {
         	$row = mysqli_fetch_assoc($result);
             if (password_verify($password, $row['password'])) {
-
-
-            $SESSION['userName'] = $row['userName'];
-       			$SESSION['role'] = $row['role'];
-        		header("Location: index.php");
-            echo "Match";
+              $_SESSION['username'] = $row['username'];
+              $_SESSION['role'] = $row['role'];
+        		  header("Location: index.php");
+            //echo "Match";
        		 }else{
         		array_push($errors, "The username or password do not match");
             }
         }
   }
 }
-
-
- //checks if username & password is empty --- NOT CURRENTLY WORKING
-  /*if (empty($username)) {
-      header("Location: login.php?error=User Name is required");
-      exit();
-  }else if(empty($password)){
-      header("Location: login.php?error=Password is required");
-      exit();
-  }else{
-    $hashedPassword = crypt($password,"$1$"); // hash password
-
-
-      $sql = "SELECT * FROM User WHERE username='$username' AND 
-        password='$hashedPassword'";
-
-      $result = mysqli_query($conn, $sql);
-
-      $row = mysqli_fetch_assoc($result);
-      
-    	if ($row['username'] == $username && $row['password'] == $hashedPassword) {
-        	$_SESSION['username'] = $row['username'];
-       		$_SESSION['role'] = $row['role'];
-        	header("Location: index.php");
-        }else{
-        	header("Location: login.php?error=Incorrect User name or Password");
-        	echo("failed login");
-        	exit();
-        }
- }
-}
-
-*/
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +63,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             <li><a href="index.php">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li id='navCurPageLi'><a href="login.php">Login</a></li>
-            <li><a href="registration.html">Register</a></li>
+            <li><a href="registration.php">Register</a></li>
         </ul>
         <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
             <i class="fa fa-bars"></i></button>  
