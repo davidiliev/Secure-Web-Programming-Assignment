@@ -76,6 +76,7 @@
             <br> User roles are assigned during registration of a new user. New users will be able to select if they want the Role of Author or Member. This selection is sent to the MySQL database and from there, can only be changed manually inside the database.
             <br>- Users restricted to the role of Author can: create posts and edit their own posts, along with everything a member can do
             <br>- Users restricted to the role of Member can: A member can upvote or dislike posts, and view posts. (Members cannot see the “Create Post” option on the navBar
+            <br>- Users who do not have an account are assigned the role of Visitor
             </p>
             <h2>Additions</h2>
             <p>
