@@ -67,6 +67,16 @@
             <p>
                 For the registration / login page and how they interact with each other. We decided to direct the user to a separate registration page, instead of taking the JavaScript approach. This was mainly because as a group, to split the assignment into 3 equal amounts, each group member would need to get a total of 30 marks worth of work. With the registration page worth 15 marks and the login worth 10 marks, we split these two tasks up. However, if we decided that both the registration.html and login.html pages were done by a single member, then we would of gone the JavaScript route.
             </p>
+            <h2>HTTP Method Used</h2>
+            <p>
+            The method we used to submit the login and registration data to the user is the POST method. We used POST over GET, as POST requests are never cached and do not remain in the browser history, whereas, GET requests do. For a Log In and Registration system, it is pivotal to make it as secure as possible and in our opinion a GET request lacks security.
+            </p>
+            <h2>Roles</h2>
+            <p>
+            <br> User roles are assigned during registration of a new user. New users will be able to select if they want the Role of Author or Member. This selection is sent to the MySQL database and from there, can only be changed manually inside the database.
+            <br>- Users restricted to the role of Author can: create posts and edit their own posts, along with everything a member can do
+            <br>- Users restricted to the role of Member can: A member can upvote or dislike posts, and view posts. (Members cannot see the “Create Post” option on the navBar
+            </p>
             <h2>Additions</h2>
             <p>
                 Beyond the scope of the assignment we added: 
@@ -95,17 +105,17 @@
                 <tr>
                     <td>David Iliev</td>
                     <td>163516</td>
-                    <td>33.33%</td>
+                    <td>37.5%</td>
                 </tr>
                 <tr>
                     <td>Tom Dickinson</td>
                     <td>508620</td>
-                    <td>33.33%</td>
+                    <td>25%</td>
                 </tr>
                 <tr>
                     <td>Lachlan Frawley</td>
                     <td>504916</td>
-                    <td>33.33%</td>
+                    <td>37.5%</td>
                 </tr>
             </table>
         </div>
