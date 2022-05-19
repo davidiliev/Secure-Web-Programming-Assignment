@@ -1,14 +1,7 @@
-<<?php
-
-
-/*
-    TODO:
-    Give feedback for failed log in attempt -- fix this, its somewhat done
-	
-*/
-
+<?php
 
 require_once "php/dbconn.php";
+$errors = array();
 session_start();
 
 $invalidLogin = false;
@@ -24,6 +17,39 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = validate($_POST["username"]);
     $password = validate($_POST["password"]);
 
+
+
+
+ /* NEEDS FIXING - Copy of password checker below but better??
+
+  if (empty($username)) {
+  		array_push($errors, "User Name is required!");
+  }else if(empty($password)){
+  		array_push($errors, "Password is required!");
+  }else{
+  
+  
+  // verify password
+  $hash = "tomdickharry";
+  
+ 	$sql = "SELECT * FROM User WHERE userName='$username'";
+        $result = mysqli_query($conn, $sql);
+        if ($result->num_rows === 1) {
+        	$row = mysqli_fetch_assoc($result);
+            if (password_verify($hash, $row['password'])) {
+
+
+            $SESSION['userName'] = $row['userName'];
+       			$SESSION['role'] = $row['role'];
+        		header("Location: index.php");
+            echo "Match";
+       		 }else{
+        		array_push($errors, "The username or password do not match");
+            }
+        }
+  }
+}
+*/
 
  //checks if username & password is empty --- NOT CURRENTLY WORKING
   if (empty($username)) {
@@ -44,41 +70,11 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
        		$SESSION['role'] = $row['role'];
         	header("Location: index.php");
         }else{
-        	header("Location: index.php?error=Incorrect User name or Password");
+        	header("Location: login.php?error=Incorrect User name or Password");
         	echo("failed login");
         	exit();
         }
  }
-
-	// Complete this if statement
-    if (authenticate($username, $password)) {
-      $_SESSION["userId"] = $username;
-      header("Location: index.php");
-      exit();
-    }
-
-}
-// Queries the DBMS with the supplied user details
-// Returns true on successful authentication and false otherwise.
-function authenticate($user, $pass)
-{
-    global $conn;
-
-    // Complete this function
-    $sql_query = 'SELECT userName, password, role FROM User WHERE userName="'.$user.'"';
-
-    // upon successful insertion, close database connection
-    $result = $conn->query($sql_query);
-    if($result) { // connection established
-      if($result->num_rows == 1) { // query found
-        $row = $result->fetch_assoc();
-        if ($row['userName'] == $user && $row['password'] == $pass) {
-            $_SESSION["userRole"] = $row['role'];
-            return true;
-        }
-      }
-    }
-    return false;
 }
 ?>
 
@@ -86,7 +82,7 @@ function authenticate($user, $pass)
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/shared.css">
@@ -94,10 +90,9 @@ function authenticate($user, $pass)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="javascript/navigation.js"></script>
   </head>
-  <body>
+<body>
   <h1>Tom, Dick & Harry's</h1>
     <div class ="column">
-
       <div class="banner"></div>
       <!--Top-level navigation bar-->
       <div id="navbar" class="navbarclass">                            
@@ -105,15 +100,14 @@ function authenticate($user, $pass)
             <li><a href="index.php">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li id='navCurPageLi'><a href="login.php">Login</a></li>
-            <li><a href="registration.php">Register</a></li>
+            <li><a href="registration.html">Register</a></li>
         </ul>
         <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
             <i class="fa fa-bars"></i></button>  
     </div>
-
-      <div class ="container">
+    <div class ="container">
         <!--Login Form-->
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" id="loginForm" class="input-group">
+        <form method="POST" action="login.php" id="loginForm" class="input-group">
           <!--Login Table-->
         <table class = "loginTable"> 
           <tr>
@@ -127,7 +121,7 @@ function authenticate($user, $pass)
             </td>
           </tr>       
         </table>
-        <input submit type="submit" value="Login" />
+        <button id="myButton" class="submit-btn" name="login">Log In</button>
         </form>
       </div>
     </div>
