@@ -87,14 +87,14 @@ function displayPosts() {
                             <li><a href="archive.php">Archive</a></li>
                             <li><a href="create.html">Create</a></li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="logout.php">Log out</a></li>'; 
+                            <li><a href="php/logout.php">Log out</a></li>'; 
 
                         } else { // Member
                             // display index, archive, about, logout
                             echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
                             <li><a href="archive.php">Archive</a></li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="logout.php">Log out</a></li>'; 
+                            <li><a href="php/logout.php">Log out</a></li>'; 
                         }
                     } else { // Visitor
                         // display index, about, login, register
@@ -102,7 +102,7 @@ function displayPosts() {
                         echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="login.php">Login</a></li>
-                        <li><a href="registration.html">Register</a></li>';      
+                        <li><a href="registration.php">Register</a></li>';      
                     }
                     ?>
                 </ul>

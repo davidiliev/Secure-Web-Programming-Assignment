@@ -105,7 +105,7 @@ function authenticate($user, $pass)
             <li><a href="index.php">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li id='navCurPageLi'><a href="login.php">Login</a></li>
-            <li><a href="registration.html">Register</a></li>
+            <li><a href="registration.php">Register</a></li>
         </ul>
         <button href="javascript:void(0);" class="icon" onclick="mobileMenu()"> 
             <i class="fa fa-bars"></i></button>  

@@ -56,14 +56,14 @@ function displayPosts() {
                             <li id="navCurPageLi"><a href="archive.php">Archive</a></li>
                             <li><a href="create.html">Create</a></li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="logout.php">Log out</a></li>'; 
+                            <li><a href="php/logout.php">Log out</a></li>'; 
 
                         } else { // Member
                             // display index, archive, about, logout
                             echo '<li><a href="index.php">Home</a></li>
                             <li id="navCurPageLi"><a href="archive.php">Archive</a></li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="logout.php">Log out</a></li>'; 
+                            <li><a href="php/logout.php">Log out</a></li>'; 
                         }
                     } // No option for visitor. Can't access this page without a userRole. 
                     ?>
