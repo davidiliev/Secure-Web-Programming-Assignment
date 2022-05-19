@@ -22,7 +22,7 @@ $emailResult= mysqli_fetch_assoc($result2);
 
 if($userResult){
 
-    if($userResult['userName'] == $username){
+    if($userResult['username'] == $username){
     array_push($errors, "Username is taken!");
  
     }
@@ -41,7 +41,7 @@ if ($password != $password2) {
 if(count($errors) == 0){
 
 $hashedPassword = crypt('$1$',$password);
-$insertUser = "INSERT INTO User (username, emailaddress, password, role)
+$insertUser = "INSERT INTO User (username, emailAddress, password, role)
                 VALUES('$username','$emailaddress','$hashedPassword','$role')";
     mysqli_query($conn,$insertUser);
                 header('Location: index.php');

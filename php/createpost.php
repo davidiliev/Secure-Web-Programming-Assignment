@@ -2,7 +2,7 @@
 session_start();
 include 'dbconn.php';
 
-$userName = htmlspecialchars($_SESSION['userId']);
+$userName = htmlspecialchars($_SESSION['username']);
 $title = htmlspecialchars($_POST['title']);
 $date = htmlspecialchars($_POST['dateName']);
 $content = htmlspecialchars($_POST['content']);

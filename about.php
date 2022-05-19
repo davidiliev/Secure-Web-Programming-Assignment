@@ -24,8 +24,8 @@
             <div id="navbar" class="navbarclass">                            
                 <ul id="navOptions">
                 <?php  
-                    if (isset($_SESSION["userRole"])) {
-                        if ($_SESSION["userRole"]=="Author") {
+                    if (isset($_SESSION["role"])) {
+                        if ($_SESSION["role"]=="Author") {
                             // display index, archive, create, about, logout
                             echo '<li><a href="index.php">Home</a></li>
                             <li><a href="archive.php">Archive</a></li>

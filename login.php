@@ -59,15 +59,19 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
       header("Location: login.php?error=Password is required");
       exit();
   }else{
-      $sql = "SELECT * FROM User WHERE userName='$username' AND 
-        password='$password'";
+    $hashedPassword = crypt('$1$',$password); // hash password
+
+
+      $sql = "SELECT * FROM User WHERE username='$username' AND 
+        password='$hashedPassword'";
 
       $result = mysqli_query($conn, $sql);
 
       $row = mysqli_fetch_assoc($result);
-    	if ($row['userName'] === $username && $row['password'] === $password) {
-        	$SESSION['userName'] = $row['userName'];
-       		$SESSION['role'] = $row['role'];
+      
+    	if ($row['username'] == $username && $row['password'] == $hashedPassword) {
+        	$_SESSION['username'] = $row['username'];
+       		$_SESSION['role'] = $row['role'];
         	header("Location: index.php");
         }else{
         	header("Location: login.php?error=Incorrect User name or Password");

@@ -14,7 +14,7 @@ require "php/dbconn.php";
 function displayPosts() {
     global $conn;
     // Query Post table for the 4 mosts recent rows. Uses MariaDB syntax
-    $sql_query = "SELECT title, content, date, userName FROM Post ORDER BY date DESC LIMIT 4";
+    $sql_query = "SELECT title, content, date, username FROM Post ORDER BY date DESC LIMIT 4";
 
     // upon successful insertion, close database connection
     $result = $conn->query($sql_query);
@@ -25,7 +25,7 @@ function displayPosts() {
             $date = strtotime($row["date"]);
 
             echo '<div id="post"><h2>'.$row["title"].
-            '</h2><p id="date">By '.$row["userName"].'<br>Published '.
+            '</h2><p id="date">By '.$row["username"].'<br>Published '.
             date('d M Y', $date).'</p><p>'.
             $row["content"].'</p></div>';
             // add buttons and close div
@@ -80,8 +80,8 @@ function displayPosts() {
                 <ul id="navOptions">
                     <!--Generate bar based on user role-->
                     <?php  
-                    if (isset($_SESSION["userRole"])) {
-                        if ($_SESSION["userRole"]=="Author") {
+                    if (isset($_SESSION["role"])) {
+                        if ($_SESSION["role"]=="Author") {
                             // display index, archive, create, about, logout
                             echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
                             <li><a href="archive.php">Archive</a></li>
@@ -98,7 +98,6 @@ function displayPosts() {
                         }
                     } else { // Visitor
                         // display index, about, login, register
-                        // TODO: include replace .html with .php when required.
                         echo '<li id="navCurPageLi"><a href="index.php">Home</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="login.php">Login</a></li>
