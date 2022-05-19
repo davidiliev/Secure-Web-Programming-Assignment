@@ -11,7 +11,6 @@ require "php/dbconn.php";
 function displayPosts() {
     global $conn;
     // Query Post table for the 4 mosts recent rows. Uses MariaDB syntax
-    // TODO: Fetch username
     //$sql_query = "SELECT title, date FROM Post ORDER BY date DESC OFFSET 4 ROWS"; // db version; can't use OFFSET 4 ROWS;
     // Dumb solution
     $sql_query = "SELECT title, date FROM Post ORDER BY date DESC LIMIT 4,9999";
@@ -21,14 +20,13 @@ function displayPosts() {
     if($result) { // connection established
       if($result->num_rows > 0) { 
         while ($row = $result->fetch_assoc()) {
-            // TODO separate paragraphs 
-            // TODO append author name
-            echo '<div id="post"><h2>'.$row["title"].'</h2><p id="date">'.$row["date"].'</p></div>';
+            $date = strtotime($row["date"]);
+
+            echo '<div id="post"><h2>'.$row["title"].'</h2><p id="date">'.date('d M Y', $date).'</p></div>';
             }
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +74,8 @@ function displayPosts() {
             <div id="mainSection">
                 <?php displayPosts()?>
             </div>
+        </div>
+
         <div class="footer">
             <p>UTAS   /    Assignment 1    /    Group 1</p>
           </div>  

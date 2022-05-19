@@ -14,17 +14,45 @@ require "php/dbconn.php";
 function displayPosts() {
     global $conn;
     // Query Post table for the 4 mosts recent rows. Uses MariaDB syntax
-    // TODO: Fetch username
-    $sql_query = "SELECT title, content, date FROM Post ORDER BY date DESC LIMIT 4";
+    $sql_query = "SELECT title, content, date, userName FROM Post ORDER BY date DESC LIMIT 4";
 
     // upon successful insertion, close database connection
     $result = $conn->query($sql_query);
     if($result) { // connection established
       if($result->num_rows > 0) { 
         while ($row = $result->fetch_assoc()) {
-            // TODO separate paragraphs 
-            // TODO append author name
-            echo '<div id="post"><h2>'.$row["title"].'</h2><p id="date">'.$row["date"].'</p><p>'.$row["content"].'</p></div>';
+
+            $date = strtotime($row["date"]);
+
+            echo '<div id="post"><h2>'.$row["title"].
+            '</h2><p id="date">By '.$row["userName"].'<br>Published '.
+            date('d M Y', $date).'</p><p>'.
+            $row["content"].'</p>';
+            // add buttons and close div
+            //</div>';
+
+            /*
+                Re-work the following into the above and related scripts
+
+        if (isset[role]) 
+            if (member)
+                clicking buttons updates front and backend.
+                should not have to refresh whole page
+
+
+            else if (author)
+                display count (no ids) & buttons with javascript
+
+                js: function ratingMessage('author')=> 
+                    if visitor: "please log in"
+                    if author: "authors can not rate posts.
+        else (visitor):
+            display count (no ids) & buttons with javascript
+
+            js: function ratingMessage('visitor')=> 
+                    if visitor: "please log in"
+                    if author: "authors can not rate posts.
+            */
             }
         }
     }

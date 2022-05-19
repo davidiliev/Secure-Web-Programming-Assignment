@@ -1,51 +1,3 @@
-/* Navigation bar. Height dependent on font-size and button of elements. */ 
-#navbar {
-    display: inline-block;
-    width: 100%;
-    background-color: #333;
-}
-
-#navOptions {
-    list-style-type:none;
-    margin: 0;
-    padding: 0;
-}
-
-#navbar button,a {
-    padding: 14px 16px;
-}
-
-#navbar a {
-    float: left;    
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    font-size: large;
-}
-
-#navbar a:hover {
-    background-color: #555;
-}
-            
-#navbar button {
-    float: right;                
-    font-size: large;                
-    border: 0;
-    background-color: #333;
-    color: white;
-}
-
-#navCurPageLi a {
-    pointer-events: none;
-    background-color: #555;
-}
-
-/*  Merge to top */
-.navbarclass .icon {
-    display: none;
-}
-
 /* Other elements */
 body {
     max-width: 800px;
@@ -59,15 +11,7 @@ body {
     width: 100%;
     margin: 0;
     padding-bottom: 50px;
-    background-color: bisque; /* can remove this column and copy this color into body. */
-}
-
-.banner {
-    text-align: center;
-    margin: 0;
-    padding: 20px 0 20px 0;
-    height:178px; /* 218 - vertical padding*/
-    background-image: url(../images/books.jpg);
+    background-color: bisque;
 }
 
 h1 {
@@ -76,10 +20,8 @@ h1 {
 }
 
 #post {
-    /*margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
     margin: 5% 5% 0 5%;
     width:auto;
-    /*padding: 8px;*/
     padding: 8px 32px;
     border: #333;
     border-radius: 10px;
@@ -87,7 +29,7 @@ h1 {
     border-style: solid;
     background-color: #EEEEEE;
     line-height : 1.4; 
-    font-size : large; /* TODO: Agree on font size*/
+    font-size : large;
 }
 
 /* The title of a post */
@@ -96,43 +38,6 @@ h1 {
 }
 
 /* The date within a post*/
-#post > #date { /*While all dates are children of posts this heads with readability. */
+#post > #date { 
     color: grey;
-}
-
-.footer {
-    position: relative;
-    left: 0;
-    bottom: 25px;
-    background-color: #454545;
-    color: white;
-    text-align: center;
-  }
-
-/* Mobile code */
-@media screen and (max-width: 800px) {
-    #navOptions li:not(#navCurPageLi) {display: none;}
-    .navbarclass .icon {
-    float: right;
-    display: block;
-  }
-
-  .navbarclass.responsive {position: relative;}
-  .navbarclass.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .navbarclass.responsive #navOptions li {
-    padding: 0 ;
-    margin: 0 ;    
-    display: flex !important; /* Strangest behaviour without !important. */
-    text-align: left;
-    flex-direction: column;
-  }  
-
-  .navbarclass.responsive #navOptions li a{
-      text-align:left;
-  }
 }

@@ -11,7 +11,7 @@ body {
     width: 100%;
     margin: 0;
     padding-bottom: 50px;
-    background-color: bisque; /* can remove this column and copy this color into body. */
+    background-color: bisque;
 }
 
 h1 {
@@ -20,10 +20,8 @@ h1 {
 }
 
 #post {
-    /*margin: 20px 32px 0 32px; /* Want space at the button for the scroll button to not overlap*/
     margin: 5% 5% 0 5%;
     width:auto;
-    /*padding: 8px;*/
     padding: 8px 32px;
     border: #333;
     border-radius: 10px;
@@ -31,7 +29,7 @@ h1 {
     border-style: solid;
     background-color: #EEEEEE;
     line-height : 1.4; 
-    font-size : large; /* TODO: Agree on font size*/
+    font-size : large;
 }
 
 /* The title of a post */
@@ -40,6 +38,6 @@ h1 {
 }
 
 /* The date within a post*/
-#post > #date { /*While all dates are children of posts this heads with readability. */
+#post > #date { 
     color: grey;
 }

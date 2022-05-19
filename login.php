@@ -11,14 +11,8 @@
 require_once "php/dbconn.php";
 session_start();
 
-
-
-
-
 $invalidLogin = false;
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-
-
 
   //validate and sanatise user input
   function validate($data){
@@ -56,11 +50,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         }
  }
 
-    
-
-  
-
-    // Complete this if statement
+	// Complete this if statement
     if (authenticate($username, $password)) {
       $_SESSION["userId"] = $username;
       header("Location: index.php");
