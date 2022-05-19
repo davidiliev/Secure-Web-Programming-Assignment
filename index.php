@@ -27,7 +27,7 @@ function displayPosts() {
             echo '<div id="post"><h2>'.$row["title"].
             '</h2><p id="date">By '.$row["userName"].'<br>Published '.
             date('d M Y', $date).'</p><p>'.
-            $row["content"].'</p>';
+            $row["content"].'</p></div>';
             // add buttons and close div
             //</div>';
 
