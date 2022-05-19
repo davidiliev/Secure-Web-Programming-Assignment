@@ -20,7 +20,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 
 
- /* NEEDS FIXING - Copy of password checker below but better??
+ // NEEDS FIXING - Copy of password checker below but better??
 
   if (empty($username)) {
   		array_push($errors, "User Name is required!");
@@ -30,13 +30,13 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   
   
   // verify password
-  $hash = "tomdickharry";
+  $hash = "$1$";
   
  	$sql = "SELECT * FROM User WHERE userName='$username'";
         $result = mysqli_query($conn, $sql);
         if ($result->num_rows === 1) {
         	$row = mysqli_fetch_assoc($result);
-            if (password_verify($hash, $row['password'])) {
+            if (password_verify($password, $row['password'])) {
 
 
             $SESSION['userName'] = $row['userName'];
@@ -49,17 +49,17 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         }
   }
 }
-*/
+
 
  //checks if username & password is empty --- NOT CURRENTLY WORKING
-  if (empty($username)) {
+  /*if (empty($username)) {
       header("Location: login.php?error=User Name is required");
       exit();
   }else if(empty($password)){
       header("Location: login.php?error=Password is required");
       exit();
   }else{
-    $hashedPassword = crypt('$1$',$password); // hash password
+    $hashedPassword = crypt($password,"$1$"); // hash password
 
 
       $sql = "SELECT * FROM User WHERE username='$username' AND 
@@ -80,6 +80,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         }
  }
 }
+
+*/
 ?>
 
 <!DOCTYPE html>
@@ -126,6 +128,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
           </tr>       
         </table>
         <button id="myButton" class="submit-btn" name="login">Log In</button>
+        <?php include('php/errors.php'); ?>
         </form>
       </div>
     </div>

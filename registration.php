@@ -40,7 +40,7 @@ if ($password != $password2) {
 
 if(count($errors) == 0){
 
-$hashedPassword = crypt('$1$',$password);
+$hashedPassword = crypt($password,'$1$');
 $insertUser = "INSERT INTO User (username, emailAddress, password, role)
                 VALUES('$username','$emailaddress','$hashedPassword','$role')";
     mysqli_query($conn,$insertUser);
