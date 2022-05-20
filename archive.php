@@ -1,11 +1,10 @@
 <?php
-/*
-    TODO: find better retrieval query
-    css to pad below a post(?)
-*/
-
 session_start();
+if(!isset($_SESSION['role'])) {
+    header('Location: index.php'); // redirect visitors.
+}
 require "php/dbconn.php";
+
 
 // get the first four recent posts
 function displayPosts() {
