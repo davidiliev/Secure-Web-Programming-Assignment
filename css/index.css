@@ -41,3 +41,15 @@ h1 {
 #post > #date { 
     color: grey;
 }
+
+/* Rating feature */
+#rating {
+    text-align: right;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+#button {
+    border: none;
+    background: none;
+}

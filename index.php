@@ -1,11 +1,4 @@
 <?php
-/*
-    TODO:
-    Add author name to the post
-    Add css for author name
-    Separate paragraphs in a post
-*/
-
 session_start();
 // connect to database
 require "php/dbconn.php";
@@ -14,51 +7,111 @@ require "php/dbconn.php";
 function displayPosts() {
     global $conn;
     // Query Post table for the 4 mosts recent rows. Uses MariaDB syntax
-    $sql_query = "SELECT title, content, date, username FROM Post ORDER BY date DESC LIMIT 4";
+    $sql_query = "SELECT title, content, date, username, id FROM Post ORDER BY date DESC LIMIT 4";
 
     // upon successful insertion, close database connection
     $result = $conn->query($sql_query);
-    if($result) { // connection established
-      if($result->num_rows > 0) { 
-        while ($row = $result->fetch_assoc()) {
+    if($result) {
+        if($result->num_rows > 0) { 
+            while ($row = $result->fetch_assoc()) {
 
-            $date = strtotime($row["date"]);
+                // convert string to date and format
+                $date = strtotime($row["date"]);
 
-            echo '<div id="post"><h2>'.$row["title"].
-            '</h2><p id="date">By '.$row["username"].'<br>Published '.
-            date('d M Y', $date).'</p><p>'.
-            $row["content"].'</p></div>';
-            // add buttons and close div
-            //</div>';
+                // display post contents with new date format
+                echo '<div id="post"><h2>'.$row["title"].
+                '</h2><p id="date">By '.$row["username"].'<br>Published '.
+                date('d M Y', $date).'</p><p>'.
+                $row["content"].'</p>';
 
-            /*
-                Re-work the following into the above and related scripts
+                // rating feature below and close div.
+                $likes = 0;
+                $dislikes = 0;
 
-        if (isset[role]) 
-            if (member)
-                clicking buttons updates front and backend.
-                should not have to refresh whole page
+                // get like and dislike counts from all users
+                $sql_query_post_likes = "SELECT COUNT(*) as likes FROM Rating WHERE postId=".$row["id"]." AND rating=1";
+                $result1 = $conn->query($sql_query_post_likes);
+                $sql_query_post_dislikes = "SELECT COUNT(*) as dislikes  FROM Rating WHERE postId=".$row["id"]." AND rating=-1";
+                $result2 = $conn->query($sql_query_post_dislikes);
 
+                if($result1) {
+                    $result1=$result1->fetch_assoc();
+                    $likes = isset($result1['likes']) ? $result1['likes'] : 0;                
+                }
 
-            else if (author)
-                display count (no ids) & buttons with javascript
+                if($result2) {
+                    $result2=$result2->fetch_assoc();
+                    $dislikes = isset($result2['dislikes']) ? $result2['dislikes'] : 0;     
+                }
 
-                js: function ratingMessage('author')=> 
-                    if visitor: "please log in"
-                    if author: "authors can not rate posts.
-        else (visitor):
-            display count (no ids) & buttons with javascript
+                // check user is logged in
+                if(isset($_SESSION['role']) && isset($_SESSION['username'])) {
+                    // user logged in
 
-            js: function ratingMessage('visitor')=> 
-                    if visitor: "please log in"
-                    if author: "authors can not rate posts.
-            */
+                    // Case members: Only members can rate. Generate necessary code.
+                    if ($_SESSION['role']=="Member") {
+                        $sql_query_user_rating = 'SELECT rating FROM Rating WHERE postId='.
+                        $row["id"].' AND username="'.$_SESSION['username'].'"';
+        
+                        $user_rating = 0;
+                        $result3 = $conn->query($sql_query_user_rating);
+                        if($result3) {
+                            $result3=$result3->fetch_assoc();
+                            if (isset($result3['rating'])) {
+                                $user_rating = $result3['rating'];                
+                            }
+                        }
+
+                        // display rating buttons and counts (with consideration to user's current rating)
+                        if ($user_rating > 0) {
+                            // liked 
+                            echo '<form id="rating"><button id="likeButton'.$row["id"].'" onclick="return clickLike('.$row["id"].');">
+                            <i id="likeIcon'.$row["id"].'" class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                            <span id="likeCount'.$row["id"].'">'.$likes.'</span> | <button id="dislikeButton'.$row["id"].'" onclick="return clickDislike('.$row["id"].');">
+                            <i id="dislikeIcon'.$row["id"].'" class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                            <span id="dislikeCount'.$row["id"].'">'.$dislikes.'</span></form></div>';
+
+                        } else if ($user_rating < 0) {
+                            // disliked 
+                            echo '<form id="rating"><button id="likeButton'.$row["id"].'" onclick="return clickLike('.$row["id"].');">
+                            <i id="likeIcon'.$row["id"].'" class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+                            <span id="likeCount'.$row["id"].'">'.$likes.'</span> | <button id="dislikeButton'.$row["id"].'" onclick="return clickDislike('.$row["id"].');">
+                            <i id="dislikeIcon'.$row["id"].'" class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                            <span id="dislikeCount'.$row["id"].'">'.$dislikes.'</span></form></div>';
+                        } else {
+                            //  neutral
+                            echo '<form id="rating"><button id="likeButton'.$row["id"].'" onclick="return clickLike('.$row["id"].');">
+                            <i id="likeIcon'.$row["id"].'" class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+                            <span id="likeCount'.$row["id"].'">'.$likes.'</span> | <button id="dislikeButton'.$row["id"].'" onclick="return clickDislike('.$row["id"].');">
+                            <i id="dislikeIcon'.$row["id"].'" class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                            <span id="dislikeCount'.$row["id"].'">'.$dislikes.'</span></form></div>';
+                        }
+                    } else { 
+                        // Case: Author. Clicking on buttons brings up message.
+                        echo '<div id="rating"><button onclick="clickAuthor()"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button> '.
+                        $likes.' | <button onclick="clickAuthor()"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button> ' .
+                        $dislikes.'</div></div>';
+
+                        // Clicking on buttons brings up message.
+                    }
+
+                } else { 
+                    // Case: Visitor. Clicking on buttons brings up message.
+                    echo '<div id="rating"><button onclick="clickVisitor()"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button> '.
+                    $likes.' | <button onclick="clickVisitor()"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button> ' .
+                    $dislikes.'</div></div>';
+                }
             }
         }
     }
 }
 ?>
-
+        <script>
+            // declare functions here otherwise functions can not be reached.
+            function clickVisitor() { alert("Only members can access this feature."); }
+            function clickAuthor(){
+                alert("Authors can not influence posts via ratings. Only members can access this feature."); }
+        </script>
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,7 +122,10 @@ function displayPosts() {
         <link rel="stylesheet" href="css/shared.css">
         <!--referencing a whole sheet for a hamburger menu...-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/navigation.js"></script>
+
+
     </head>
     <body>     
         <h1>Tom, Dick & Harry's</h1>
@@ -116,5 +172,89 @@ function displayPosts() {
         <div class="footer">
             <p>UTAS   /    Assignment 1    /    Group 1</p>
           </div>
+    <script>
+        function clickLike(id) {
+            var userName =  <?php echo '"'.$_SESSION['username'].'"'?>;
+            var likeBtn = document.getElementById('likeIcon' + id);
+            var dislikeBtn = document.getElementById('dislikeIcon' + id);
+            var likeCount = document.getElementById('likeCount' + id);
+            var dislikeCount = document.getElementById('dislikeCount' + id);
+            var rating = 0;
+
+            // if like not press => pressed
+            if (likeBtn.className == "fa fa-thumbs-o-up") { // like not pressed => like
+                if (dislikeBtn.className == "fa fa-thumbs-down") { // dislike pressed                    
+                    dislikeBtn.className = "fa fa-thumbs-o-down"; // set dislike not pressed                    
+                    dislikeCount.textContent--; // decrement dislike number
+                } // dislike not pressed
+                likeBtn.className = "fa fa-thumbs-up";                
+                likeCount.textContent++; // increment like number
+                rating = 1;
+            } else { // like already pressed => unlike
+                likeBtn.className = "fa fa-thumbs-o-up";                
+                likeCount.textContent--; // decrement like number
+                rating = 0;
+            }
+
+            $.ajax({
+                type:"post",
+                url:"php/ratepost.php",
+                data: 
+                {  
+                'username' : userName, // can't access this function without being a member.
+                'postId' : id,
+                'rating' : rating
+                },
+                cache:false,
+                success: function (html) 
+                {
+                $('#msg').html(html);
+                }
+            });
+
+            return false;
+        }
+
+        function clickDislike(id) {
+            var userName =  <?php echo '"'.$_SESSION['username'].'"'?>;
+            var likeBtn = document.getElementById('likeIcon' + id);
+            var dislikeBtn = document.getElementById('dislikeIcon' + id);
+            var likeCount = document.getElementById('likeCount' + id);
+            var dislikeCount = document.getElementById('dislikeCount' + id);
+            var rating = 0;
+
+            // same logic as like, opposite values.
+            if (dislikeBtn.className == "fa fa-thumbs-o-down") {
+                if (likeBtn.className == "fa fa-thumbs-up") { 
+                    likeBtn.className = "fa fa-thumbs-o-up";
+                    likeCount.textContent--;
+                } 
+                dislikeBtn.className = "fa fa-thumbs-down";
+                dislikeCount.textContent++;
+                rating = -1;
+            } else {
+                dislikeBtn.className = "fa fa-thumbs-o-down";
+                dislikeCount.textContent--;
+                rating = 0;
+            }
+
+            $.ajax({
+                type:"post",
+                url:"php/ratepost.php",
+                data: 
+                {  
+                'username' : userName, // can't access this function without being a member.
+                'postId' : id,
+                'rating' : rating
+                },
+                cache:false,
+                success: function (html) 
+                {
+                $('#msg').html(html);
+                }
+            });
+            return false;
+        }
+    </script>
     </body>
 </html>

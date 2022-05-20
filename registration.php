@@ -1,5 +1,6 @@
 <?php 
 include 'php/dbconn.php';
+session_start();
 $errors = array(); 
 if (isset($_POST["register"])){
 $username = htmlspecialchars($_POST['username']);
@@ -43,8 +44,11 @@ if(count($errors) == 0){
 $hashedPassword = crypt($password,'$1$');
 $insertUser = "INSERT INTO User (username, emailAddress, password, role)
                 VALUES('$username','$emailaddress','$hashedPassword','$role')";
-    mysqli_query($conn,$insertUser);
-                header('Location: index.php');
+  mysqli_query($conn,$insertUser);
+  // log in
+  $_SESSION['username'] = $username;
+  $_SESSION['role'] = $role;
+  header('Location: index.php');
 }
 	
 		}
@@ -55,7 +59,7 @@ $insertUser = "INSERT INTO User (username, emailAddress, password, role)
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registration Page</title>
         <link rel="stylesheet" href="css/registration_style.css">
         <link rel="stylesheet" href="css/shared.css">
