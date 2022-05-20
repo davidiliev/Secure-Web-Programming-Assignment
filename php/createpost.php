@@ -6,7 +6,15 @@ if (isset($_SESSION['username'])) {
    $userName = htmlspecialchars($_SESSION['username']);
    $title = htmlspecialchars($_POST['title']);
    $date = htmlspecialchars($_POST['dateName']);
-   $content = htmlspecialchars($_POST['content']);
+   
+   // prapre any paragraphs for easy retrieval when in index.php.
+   $paragraphs = explode("\n", htmlspecialchars($_POST['content']));
+   for ($i = 0; $i < count($paragraphs); $i++)
+   {
+       $paragraphs[$i] = '<p>'.$paragraphs[$i].'</p>';
+   }
+   $content = implode('', $paragraphs); // store as one massive string
+
    $sql = "INSERT INTO Post(username, title, date, content)
    VALUES('$userName', '$title','$date','$content')";
      if (mysqli_query($conn, $sql)) {
